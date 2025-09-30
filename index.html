@@ -1,26 +1,437 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coming Soon</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-    }
-    h1 {
-      font-size: 2em;
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="description" content="MoE Enhenced Diffusion Policy">
+  <meta name="keywords" content="Diffusion Policy,Mixture of Expert,skill decomposition">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MoE-Diffusion Policy</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <link rel="icon" href="./robot_4047.ico">
+
+  
 </head>
+
+
 <body>
-  <h1>Coming Soon, Stay Tuned!</h1>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            <span style="font-family: Georgia; color: rgb(61,117,168);">MoE-DP: </span> An MoE-Enhanced Diffusion Policy for Robust Long-Horizon Robotic Manipulation with Skill Decomposition and Failure Recovery
+            <br/>
+          </h1>
+
+          <!-- <h1 class="title is-1 publication-title">Learning to Catch with Mobile Dexterous Hands</h1> -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Anonymous Authors
+            </span>
+          </div>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="columns is-centered">
+  <div class="column is-three-fifths is-centered has-text-centered">
+    <video controls autoplay loop muted playsinline src="./resources/overview/overview.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; width: 100%; height: auto;"></video>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <h2 class="title is-2">Abstract</h2>
+        <figure class="image is-16by9" style="margin: 1.5rem auto;">
+          <img src="resources\overview\cover.png" alt="MoE-DP Framework">
+          <!-- <figcaption class="has-text-centered">MoE-DP enables robust recovery, interpretable skill decomposition, and high-level control for long-horizon manipulation</figcaption> -->
+        </figure>
+        <div class="content has-text-justified">
+          <p>
+            Diffusion policies have emerged as a powerful framework for robotic visuomotor control, yet they often lack the robustness to recover from subtask failures in long-horizon, multi-stage tasks and their learned representations of observations are often difficult to interpret. In this work, we propose the Mixture of Experts-Enhanced Diffusion Policy (MoE-DP), where the core idea is to insert a Mixture of Experts (MoE) layer between the visual encoder and the diffusion model. This layer decomposes the policy's knowledge into a set of specialized experts, which are dynamically activated to handle different phases of a task. We demonstrate through extensive experiments that MoE-DP exhibits a strong capability to recover from disturbances, significantly outperforming standard baselines in robustness. On a suite of 6 long-horizon simulation tasks, this leads to a 36% average relative improvement in success rate under disturbed conditions. This enhanced robustness is further validated in the real world, where MoE-DP also shows significant performance gains. We further show that MoE-DP learns an interpretable skill decomposition, where distinct experts correspond to semantic task primitives (e.g., approaching, grasping). This learned structure can be leveraged for inference-time control, allowing for the rearrangement of subtasks without any re-training.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2" style="text-align: center;">Realworld tasks under disturbed condition</h2>
+
+    <!-- Task 1: Duck Drawer -->
+    <div class="columns is-centered">
+      <div class="column is-full-widts">
+        <div class="columns is-centered no-wrap-columns">
+          <div class="column is-half is-centered has-text-centered">
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">DP (Baseline) — Duck place drawer close</h4>
+            <video controls autoplay loop muted playsinline src="./resources/real_world/DP_Disturb/1.Duck_Drawer_DP_Disturb_Fail.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
+          </div>
+          <div class="column is-half is-centered has-text-centered">
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">MoE-DP (Ours) — Duck place drawer close</h4>
+            <video controls autoplay loop muted playsinline src="./resources/real_world/MoE_Disturb/1.Duck_drawer_FE_Disturb_Success_1.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
+          </div>
+        </div>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-two-thirds">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Task 2: Duck Strawberry -->
+    <div class="columns is-centered" style="margin-top: 1.0rem;">
+      <div class="column is-full-widts">
+        <div class="columns is-centered no-wrap-columns">
+          <div class="column is-half is-centered has-text-centered">
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">DP (Baseline) — Duck place bowl transport</h4>
+            <video controls autoplay loop muted playsinline src="./resources/real_world/DP_Disturb/2.Duck_starwberry_DP_DIsturb._Fail.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
+          </div>
+          <div class="column is-half is-centered has-text-centered">
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">MoE-DP (Ours) — Duck place bowl transport</h4>
+            <video controls autoplay loop muted playsinline src="./resources/real_world/MoE_Disturb/2.Duck_strawberry_FE_Disturb_Success.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
+          </div>
+        </div>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-two-thirds">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Task 3: Pick two cubes -->
+    <div class="columns is-centered" style="margin-top: 1.0rem;">
+      <div class="column is-full-widts">
+        <div class="columns is-centered no-wrap-columns">
+          <div class="column is-half is-centered has-text-centered">
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">DP (Baseline) — Pick two cubes</h4>
+            <video controls autoplay loop muted playsinline src="./resources/real_world/DP_Disturb/3.Pick_two_cube_DP_Disturb_Fail.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
+          </div>
+          <div class="column is-half is-centered has-text-centered">
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">MoE-DP (Ours) — Pick two cubes</h4>
+            <video controls autoplay loop muted playsinline src="./resources/real_world/MoE_Disturb/3.Pick_two_cube_FE_Disturb_Success.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
+          </div>
+        </div>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-two-thirds">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2" style="text-align: center;">Simulation tasks under disturbed condition</h2>
+
+    <!-- Task 1: Hammer/Table_cleanup -->
+    <div class="columns is-centered">
+      <div class="column is-full-widts">
+        <div class="columns is-centered">
+          <div class="column is-half is-centered has-text-centered">
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">DP (Baseline) — Table_cleanup</h4>
+            <video controls autoplay loop muted playsinline src="./resources/simulation/DP_Disturb/4.Hammer_DP_recovery_Fail.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
+          </div>
+          <div class="column is-half is-centered has-text-centered">
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">MoE-DP (Ours) — Table_cleanup</h4>
+            <video controls autoplay loop muted playsinline src="./resources/simulation/MoE_Disturb/4.Hammer_place_FE_recovery.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
+          </div>
+        </div>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-two-thirds">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Task 2: Kitchen -->
+    <div class="columns is-centered" style="margin-top: 1.0rem;">
+      <div class="column is-full-widts">
+        <div class="columns is-centered">
+          <div class="column is-half is-centered has-text-centered">
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">DP (Baseline) — Kitchen</h4>
+            <video controls autoplay loop muted playsinline src="./resources/simulation/DP_Disturb/5.Kitchen_DP_Recovery_Fail.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
+          </div>
+          <div class="column is-half is-centered has-text-centered">
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">MoE-DP (Ours) — Kitchen</h4>
+            <video controls autoplay loop muted playsinline src="./resources/simulation/MoE_Disturb/5.Kitchen_FE_Recovery(1).mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
+          </div>
+        </div>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-two-thirds">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Task 3: Mug/Mug_cleanup -->
+    <div class="columns is-centered" style="margin-top: 1.0rem;">
+      <div class="column is-full-widts">
+        <div class="columns is-centered">
+          <div class="column is-half is-centered has-text-centered">
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">DP (Baseline) — Mug_cleanup</h4>
+            <video controls autoplay loop muted playsinline src="./resources/simulation/DP_Disturb/6.Mug_DP_Recovery_Fail(1).mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
+          </div>
+          <div class="column is-half is-centered has-text-centered">
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">MoE-DP (Ours) — Mug_cleanup</h4>
+            <video controls autoplay loop muted playsinline src="./resources/simulation/MoE_Disturb/6.Mug_FE_Recovery(1).mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
+          </div>
+        </div>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-two-thirds">
+            <div class="content has-text-justified">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2" style="text-align: center;"><span style="font-family: Georgia; color: rgb(61,117,168);">MoE-DP</span>  can rearrange the order of subtasks under VLM guidance</h2>
+
+    <!-- Task 1: Duck drawer -->
+    <div class="columns is-centered">
+      <div class="column is-full-widts">
+        <div class="columns is-centered no-wrap-columns">
+          <div class="column is-half is-centered has-text-centered">
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">Norm (normal order) — Duck drawer</h4>
+            <video controls autoplay loop muted playsinline src="./resources/VLM/Norm/1.Duck_drawer_FE_Norm.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
+          </div>
+          <div class="column is-half is-centered has-text-centered">
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">VLM-guided (rearranged order) — Duck drawer</h4>
+            <video controls autoplay loop muted playsinline src="./resources/VLM/VLM_guide/1.Duck_drawer_FE_VLM.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Task 2: Duck strawberry -->
+    <div class="columns is-centered" style="margin-top: 1.0rem;">
+      <div class="column is-full-widts">
+        <div class="columns is-centered no-wrap-columns">
+          <div class="column is-half is-centered has-text-centered">
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">Norm (normal order) — Duck strawberry</h4>
+            <video controls autoplay loop muted playsinline src="./resources/VLM/Norm/2.Duck_strawberry_FE_Norm.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
+          </div>
+          <div class="column is-half is-centered has-text-centered">
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">VLM-guided (rearranged order) — Duck strawberry</h4>
+            <video controls autoplay loop muted playsinline src="./resources/VLM/VLM_guide/2.Duck_strawberry_FE_VLM.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Task 3: Pick two cubes -->
+    <div class="columns is-centered" style="margin-top: 1.0rem;">
+      <div class="column is-full-widts">
+        <div class="columns is-centered no-wrap-columns">
+          <div class="column is-half is-centered has-text-centered">
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">Norm (normal order) — Pick two cubes</h4>
+            <video controls autoplay loop muted playsinline src="./resources/VLM/Norm/3.Pick_two_cube_FE_norm.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
+          </div>
+          <div class="column is-half is-centered has-text-centered">
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">VLM-guided (rearranged order) — Pick two cubes</h4>
+            <video controls autoplay loop muted playsinline src="./resources/VLM/VLM_guide/3.pick_two_cube_FE_VLM.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- <section class="section">
+  <div class="container">
+    <h2 class="title is-2" style="text-align: center;">Simulation Task at the disturbed condition</h2>
+    <<div class="column is-full-widts">
+      <div class="columns is-centered"> 
+        <div class="column is-full-width is-centered has-text-centered">
+          <video controls autoplay loop muted playsinline src="./resources/real_world/lowFPS-1.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%; width: 100%;"></video>
+        </div>
+        <div class="column is-full-width is-centered has-text-centered">
+          <video controls autoplay loop muted playsinline src="./resources/real_world/lowFPS-2.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%; width: 100%;"></video>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-full-widts">
+        <div class="columns is-centered"> 
+          <div class="column is-full-width is-centered has-text-centered">
+            <video controls autoplay loop muted playsinline src="./resources/real_world/lowFPS-1.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%; width: 100%;"></video>
+          </div>
+          <div class="column is-full-width is-centered has-text-centered">
+            <video controls autoplay loop muted playsinline src="./resources/real_world/lowFPS-2.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%; width: 100%;"></video>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-full-width is-centered has-text-centered">
+            <video controls autoplay loop muted playsinline src="./resources/real_world/strange-success-fast.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%; width: 100%;"></video>
+          </div>
+          <div class="column is-full-width is-centered has-text-centered">
+            <video controls autoplay loop muted playsinline src="./resources/real_world/cube-success-2-fast.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%; width: 100%;"></video>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-full-width is-centered has-text-centered">
+            <video controls autoplay loop muted playsinline src="./resources/real_world/ball-success-ok1-fast.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%; width: 100%;"></video>
+          </div>
+          <div class="column is-full-width is-centered has-text-centered">
+            <video controls autoplay loop muted playsinline src="./resources/real_world/cube-success-3-fast.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%; width: 100%;"></video>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-full-widts">
+        <div class="columns is-centered">
+          <video controls autoplay loop muted playsinline src="./resources/real_world/cube-success-1.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0% 1.0% 1.0% 2.0%; width: 98%;"></video>
+        </div>
+        <div class="columns is-centered">
+          <video controls autoplay loop muted playsinline src="./resources/real_world/strange-success-moremove2.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0% 1.0% 1.0% 2.0%; width: 98%;"></video>
+        </div>
+        <div class="columns is-centered">
+          <video controls autoplay loop muted playsinline src="./resources/real_world/cylinder-success.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0% 1.0% 1.0% 2.0%; width: 98%;"></video>
+        </div>
+      </div>
+    </div>
+    < <div class="column is-full-width is-centered has-text-centered">
+      <video controls autoplay loop muted playsinline src="./resources/crawl/crawl_2_2.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%; width: 70%;"></video>
+    </div>
+  </div>
+</section> -->
+
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2" style="text-align: center;">Method</h2>
+
+
+
+    <h2 class="title is-1" style="text-align: center;"> 
+      <h2 class="title is-3" style="text-align: center;"> Overview of <span style="font-family: Georgia; color: rgb(61,117,168);">MoE-DP </span>  with high-level guidance</h2>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <div class="content has-text-justified">
+          <p>
+            In its autonomous mode, the system encodes observation inputs
+            (images and robot state) into a feature vector, which is then fed to an MoE layer. The MoE’s router automatically selects
+            the appropriate expert for the current observation. The output of the selected expert then serves as a conditioning input for
+            the Diffusion Policy during action generation. While the router typically operates autonomously, the architecture supports
+            high-level control: an external agent, such as a human operator or a Vision-Language Model (VLM), can guide the policy
+            by overriding the router’s default selection. This capability enables flexible behaviors, such as reordering subtasks to
+            generalize to novel sequences not seen during training..
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-four-fifths is-centered has-text-centered">
+        <!-- <video controls autoplay loop muted playsinline src="./resources/method/soft-dyanmics.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%; width: 70%;"></video> -->
+        <img src="resources\method\MoE_Overview.jpg" alt="" style="width: 90%;" />
+      </div>
+    </div>
+    <!-- <h2 class="title is-3" style="text-align: center;">System Overview</h2>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <div class="content has-text-justified">
+          <p>
+
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-three-fifths is-centered has-text-centered">
+        <img src="./resources/method/real_setup2.png" alt="" style="width: 100%;" />
+      </div>
+    </div> -->
+    <div class="mb-6"></div> 
+    <h2 class="title is-3" style="text-align: center;">Overview of the VLM-based planning and control framework</h2>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <div class="content has-text-justified">
+          <p>
+            Our system leverages a VLM for high-level
+            task planning in two stages. First, at the skill summarization
+            (①) stage, the VLM builds a textual knowledge base of the
+            robot’s capabilities by analyzing annotated frames from a
+            demonstration that follows the same execution sequence as
+            the training data. Second, at the task execution stage (②), the
+            VLM uses this knowledge, a high-level goal, and a real-time
+            image to reason about the current task stage and predict the
+            appropriate expert to activate. This hierarchical architecture
+            enables the system to dynamically plan and rearrange the
+            order of subtasks without any re-training, translating abstract
+            goals into concrete robotic actions.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-four-fifths is-centered has-text-centered">
+        <!-- <video controls autoplay loop muted playsinline src="./resources/method/hard-dynamics.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%; width: 70%;"></video> -->
+        <img src="resources\method\vlm.jpg" alt="" style="width: 90%;" />
+      </div>
+    </div>
+
+   
+
+
+    <!-- <div class="columns is-centered">
+      <div class="column is-full-width is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./resources/simulation/CatchUnseen.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%; width: 75%;margin-top: -0.5rem"></video>
+      </div>
+    </div> -->
+
+    <!-- <h2 class="title is-3" style="text-align: center;">Multi-Process Controller Based on ROS</h2>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <div class="content has-text-justified">
+          <p>
+
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-three-fifths is-centered has-text-centered">
+        <img src="./resources/method/ros_control.png" alt="" style="width: 100%;" />
+      </div>
+    </div>
+  </div> -->
+
+</section>
+
 </body>
 </html>
