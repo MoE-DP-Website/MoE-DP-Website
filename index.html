@@ -152,29 +152,65 @@
   <div class="container">
     <h2 class="title is-2" style="text-align: center;">Simulation tasks under disturbed condition</h2>
 
-    <!-- Task 1: Hammer/Table_cleanup -->
+    <!-- Row 1: Coffee and Cube_place -->
     <div class="columns is-centered">
-      <div class="column is-full-widts">
+      <div class="column is-half">
         <div class="columns is-centered">
           <div class="column is-half is-centered has-text-centered">
-            <h4 class="title is-5" style="margin-bottom: 0.5rem;">DP (Baseline) — Table_cleanup</h4>
-            <video controls autoplay loop muted playsinline src="./resources/simulation/DP_Disturb/4.Hammer_DP_recovery_Fail.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">DP (Baseline) — Coffee<br>Preparation</h4>
+            <video controls autoplay loop muted playsinline src="./resources/simulation/DP_Disturb/1.Coffee_pre_DP_Disturb_Fail.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
           </div>
           <div class="column is-half is-centered has-text-centered">
-            <h4 class="title is-5" style="margin-bottom: 0.5rem;">MoE-DP (Ours) — Table_cleanup</h4>
-            <video controls autoplay loop muted playsinline src="./resources/simulation/MoE_Disturb/4.Hammer_place_FE_recovery.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">MoE-DP (Ours) — Coffee<br>Preparation</h4>
+            <video controls autoplay loop muted playsinline src="./resources/simulation/MoE_Disturb/1.Coffee_FE_Disturb_Success.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
           </div>
         </div>
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-two-thirds">
+      </div>
+      <div class="column is-half" style="border-left: 1px dashed #ccc; padding-left: 1rem;">
+        <div class="columns is-centered">
+          <div class="column is-half is-centered has-text-centered">
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">DP (Baseline) — Kitchen<br>Cleanup</h4>
+            <video controls autoplay loop muted playsinline src="./resources/simulation/DP_Disturb/2.Cube_place_DP_Fail.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
+          </div>
+          <div class="column is-half is-centered has-text-centered">
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">MoE-DP (Ours) — Kitchen<br>Cleanup</h4>
+            <video controls autoplay loop muted playsinline src="./resources/simulation/MoE_Disturb/2.Cube_place_FE_recovery.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Task 2: Kitchen -->
+    <!-- Row 2: Hammer_clean and Hammer/Table_cleanup -->
     <div class="columns is-centered" style="margin-top: 1.0rem;">
-      <div class="column is-full-widts">
+      <div class="column is-half">
+        <div class="columns is-centered">
+          <div class="column is-half is-centered has-text-centered">
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">DP (Baseline) — Hammer<br>cleanup</h4>
+            <video controls autoplay loop muted playsinline src="./resources/simulation/DP_Disturb/3.Hammer_clean_DP_Disturb_Fail.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
+          </div>
+          <div class="column is-half is-centered has-text-centered">
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">MoE-DP (Ours) — Hammer<br>cleanup</h4>
+            <video controls autoplay loop muted playsinline src="./resources/simulation/MoE_Disturb/3.Hammer_clean_FE_disturb_Success.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
+          </div>
+        </div>
+      </div>
+      <div class="column is-half" style="border-left: 1px dashed #ccc; padding-left: 1rem;">
+        <div class="columns is-centered">
+          <div class="column is-half is-centered has-text-centered">
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">DP (Baseline) — Table<br>cleanup</h4>
+            <video controls autoplay loop muted playsinline src="./resources/simulation/DP_Disturb/4.Hammer_DP_recovery_Fail.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
+          </div>
+          <div class="column is-half is-centered has-text-centered">
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">MoE-DP (Ours) — Table<br>cleanup</h4>
+            <video controls autoplay loop muted playsinline src="./resources/simulation/MoE_Disturb/4.Hammer_place_FE_recovery.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 3: Kitchen and Mug_cleanup -->
+    <div class="columns is-centered" style="margin-top: 1.0rem;">
+      <div class="column is-half">
         <div class="columns is-centered">
           <div class="column is-half is-centered has-text-centered">
             <h4 class="title is-5" style="margin-bottom: 0.5rem;">DP (Baseline) — Kitchen</h4>
@@ -185,30 +221,16 @@
             <video controls autoplay loop muted playsinline src="./resources/simulation/MoE_Disturb/5.Kitchen_FE_Recovery(1).mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
           </div>
         </div>
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-two-thirds">
-          </div>
-        </div>
       </div>
-    </div>
-
-    <!-- Task 3: Mug/Mug_cleanup -->
-    <div class="columns is-centered" style="margin-top: 1.0rem;">
-      <div class="column is-full-widts">
+      <div class="column is-half" style="border-left: 1px dashed #ccc; padding-left: 1rem;">
         <div class="columns is-centered">
           <div class="column is-half is-centered has-text-centered">
-            <h4 class="title is-5" style="margin-bottom: 0.5rem;">DP (Baseline) — Mug_cleanup</h4>
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">DP (Baseline) — Mug<br>cleanup</h4>
             <video controls autoplay loop muted playsinline src="./resources/simulation/DP_Disturb/6.Mug_DP_Recovery_Fail(1).mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
           </div>
           <div class="column is-half is-centered has-text-centered">
-            <h4 class="title is-5" style="margin-bottom: 0.5rem;">MoE-DP (Ours) — Mug_cleanup</h4>
+            <h4 class="title is-5" style="margin-bottom: 0.5rem;">MoE-DP (Ours) — Mug<br>cleanup</h4>
             <video controls autoplay loop muted playsinline src="./resources/simulation/MoE_Disturb/6.Mug_FE_Recovery(1).mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5% 1.0%; width: 85%;"></video>
-          </div>
-        </div>
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-two-thirds">
-            <div class="content has-text-justified">
-            </div>
           </div>
         </div>
       </div>
